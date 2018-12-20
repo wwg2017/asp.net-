@@ -1,0 +1,446 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link href="~/Content/style.min.css" rel="stylesheet" />
+<link href="~/Content/jquery.treemenu.css" rel="stylesheet" />
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <style>
+        .parent_div {
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+<body style="background-color:white;" >
+
+    <a id="hr_three" href="http://www.baidu.com"  onclick="alert('我是最里层！')">点击我</a>
+    <div> 倒计时描述：<div id="miao"></div></div>
+    <div id="timer"></div>
+    <div style="margin-left:50%;">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne" id="actionType">
+                        新增作业
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @using (Html.BeginForm("Add", "Home", null, FormMethod.Post, new { @id = "formHelloJob", @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label for="LoginName" class="col-sm-2 control-label">群组</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="GroupName" id="GroupName"
+                                       placeholder="请输入群组" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password" class="col-sm-2 control-label">作业名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="JobName" id="JobName"
+                                       placeholder="请输入作业名称" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password" class="col-sm-2 control-label">触发器名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="TriggerName" id="TriggerName"
+                                       placeholder="请输入触发器名称" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password" class="col-sm-2 control-label">执行计划</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="Cron" id="Cron"
+                                       placeholder="请输入执行计划" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password" class="col-sm-2 control-label">描述</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="Description" id="Description"
+                                       placeholder="请输入描述" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="hidden" name="Id" id="Id" />
+                                <button type="submit" class="btn btn-default">提交</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div style=" margin-bottom:5px;">
+            <a id="btnRun" class="btn btn-default" href="#" role="button">执行</a>
+            <a id="btnPause" class="btn btn-default" href="#" role="button">暂停</a>
+            <a id="btnResume" class="btn btn-default" href="#" role="button">恢复</a>
+
+            <a id="btnEdit" class="btn btn-default" href="#" role="button" style=" margin-left:10px">修改</a>
+            <a id="btnDel" class="btn btn-default" href="#" role="button">删除</a>
+        </div>
+        <table id="list" class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" class="chkAll" /></th>
+                    <th>序号</th>
+                    <th>群组</th>
+                    <th>作业名称</th>
+                    <th>触发器名称</th>
+                    <th>执行计划</th>
+                    <th>描述</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <th>上次执行</th>
+                    <th>下次执行</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+
+
+    <div id="ulw">
+        <ul>
+            <li>dsadasdasd</li>
+        </ul>
+    </div>
+    <p>
+        <input class="uploadFile" type="file" id="uploadFile">
+    </p>
+    <p>
+        <input type="button" id="btnAll" value="查询所有" />
+    </p>
+    <p>
+        <input type="text" id="txtID" name="txtID" />
+        <input type="button" id="btnID" value="根据ID查询" />
+    </p>
+    <p>
+        <select id="ddlSex" name="ddlSex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        <input type="button" id="btnSex" value="根据性别查询" />
+    </p>
+    <div id="contactAll">
+    </div>
+    <div id="contactID">
+    </div>
+    <div id="contactSex">
+    </div>
+
+    树形插件
+
+    <ul class="tree">
+        @*<li id="1701040054570000101" class="jstree-open jstree-checked"><a>01</a><ul> <li id="1701040055050000101" class="jstree-open jstree-checked"><a>生产部</a><ul> <li id="1701040110090000101" class="jstree-open jstree-checked"><a>生产二班</a> </li> <li id="1701111016090000101" class="jstree-open jstree-checked"><a>生产三部</a> </li> <li id="1701040110020000101" class="jstree-open jstree-checked"><a>生产一班</a> </li> </ul> </li> </ul> </li>
+            <li id="1701040055380000101" class="jstree-open jstree-checked"><a>02</a><ul> <li id="1701040055520000101" class="jstree-open jstree-checked"><a>销售部</a><ul> <li id="1701040110340000101" class="jstree-open jstree-checked"><a>销售二部</a> </li> <li id="1701040110430000101" class="jstree-open jstree-checked"><a>销售三部</a> </li> <li id="1701040110240000101" class="jstree-open jstree-checked"><a>销售一部</a> </li> </ul> </li> </ul> </li>
+            <li id="1701040057170000101" class="jstree-open jstree-checked"><a>03</a><ul> <li id="1701040057230000101" class="jstree-open jstree-checked"><a>行政部</a> </li> </ul> </li>
+            <li id="1701040110590000101" class="jstree-open jstree-checked"><a>04</a><ul> <li id="1701040111060000101" class="jstree-open jstree-checked"><a>财务部</a><ul> <li id="1701040111250000101" class="jstree-open jstree-checked"><a>工厂财务</a> </li> <li id="1701040111170000101" class="jstree-open jstree-checked"><a>市场财务</a> </li> </ul> </li> </ul> </li>*@
+
+        @Html.Raw(ViewBag.Db);
+    </ul>
+    //滚动数据
+
+
+    <div class="parent_div">
+        <ul id="my_list">
+            <li>This is list item origin.</li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+        //$(function () {
+
+        //    $("#btnEdit").click(function () {
+        //        var id = GetChooseIds();
+        //        if (id == undefined || id == null || id == "") return;
+
+        //        $.ajax({
+        //            url: "/HelloJob/Edit/" + id,
+        //            type: "GET",
+        //            dataType: 'json',
+        //            success: function (result) {
+        //                $("#Id").val(result.Id);
+        //                $("#GroupName").val(result.GroupName);
+        //                $("#JobName").val(result.JobName);
+        //                $("#TriggerName").val(result.TriggerName);
+        //                $("#Cron").val(result.Cron);
+        //                $("#Description").val(result.Description);
+
+        //                $('#collapseOne').collapse('show');
+        //                $("#formHelloJob").attr("action", "/HelloJob/Edit");
+        //                $("#actionType").html("修改作业");
+        //            },
+        //            error: function (e) {
+        //                alert(e);
+        //            }
+        //        });
+        //    });
+
+        //    $("#btnDel").click(function () {
+        //        var id = GetChooseIds();
+        //        if (id == undefined || id == null || id == "") return;
+
+        //        CreateDeleteWindow(function () {
+        //            location.href = "/HelloJob/Delete/" + id;
+        //        });
+        //    });
+
+        //    $("#btnRun").click(function () {
+        //        var id = GetChooseIds();
+        //        if (id == undefined || id == null || id == "") return;
+
+        //        CreateRunWindow(function () {
+        //            location.href = "/HelloJob/Run/" + id;
+        //        });
+        //    });
+
+        //    $("#btnPause").click(function () {
+        //        var id = GetChooseIds();
+        //        if (id == undefined || id == null || id == "") return;
+
+        //        CreatePauseWindow(function () {
+        //            location.href = "/HelloJob/Pause/" + id;
+        //        });
+        //    });
+
+        //    $("#btnResume").click(function () {
+        //        var id = GetChooseIds();
+        //        if (id == undefined || id == null || id == "") return;
+
+        //        CreateResumeWindow(function () {
+        //            location.href = "/HelloJob/Resume/" + id;
+        //        });
+        //    });
+
+        //    function GetChooseIds() {
+        //        var id = "";
+        //        $('input[name="subBox"]').each(function () {
+        //            id = $(this).attr("value");
+        //        });
+
+        //        return id;
+        //    }
+        //});
+    </script>
+</body>
+
+</html>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script>   $(function () {
+       $("#hr_three").click(function (event) {
+           return false;
+       });
+   });
+    $(function () {
+
+        var t = 11;
+        var a = setInterval(daojishi, 1000);//1000毫秒
+        function daojishi() {           
+            t--;
+            $("#miao").text(t);
+            //刷新时间显示
+            if (t == 0) {
+                clearInterval(a);
+                //倒计时结束               
+            }
+
+        }
+       
+        var time = "2017-10-26 23:00:00";
+        var times = Date.parse(new Date(time.replace(/-/g, "/")));
+       
+        var mycars = new Array();    
+        var st=$("#sd").val();
+        mycars = st.split('-');
+        alert(mycars);
+        setInterval("leftTimer(" + mycars[0] + "," + mycars[1] + "," + mycars[2] + "," + mycars[3] + "," + mycars[4] + "," + mycars[5] + ")", 1000);
+    });
+        function leftTimer(year, month, day, hour, minute, second)
+    {         
+            var leftTime = (new Date(year, month - 1, day, hour, minute, second)) - (new Date()); //计算剩余的毫秒数            
+            var days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数 
+            var hours = parseInt(leftTime / 1000 / 60 / 60 , 10) ; //计算剩余的小时 
+            var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟 
+            var seconds = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数            
+            hours = checkTime(hours);
+            minutes = checkTime(minutes);
+            seconds = checkTime(seconds);           
+            document.getElementById("timer").innerHTML = + hours + "小时" + minutes + "分" + seconds + "秒";
+        }
+        function checkTime(i) { //将0-9的数字前面加上0，例1变为01 
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+                
+    $(function () {
+        var template1 = "我是{0}，今年{1}了";
+        var template2 = "我是{name}，今年{age}了";
+        var result1 = template1.format("loogn", 22);
+        var result2 = template2.format({ name: "loogn", age: 22 });       
+    });
+    String.prototype.format = function (args) {       
+        var result = this;
+        if (arguments.length > 0) {
+            if (arguments.length == 1 && typeof (args) == "object") {
+                for (var key in args) {
+                    if (args[key] != undefined) {
+                        var reg = new RegExp("({" + key + "})", "g");
+                        result = result.replace(reg, args[key]);
+                    }
+                }
+            }
+            else {
+                for (var i = 0; i < arguments.length; i++) {
+                    if (arguments[i] != undefined) {
+                        //var reg = new RegExp("({[" + i + "]})", "g");//这个在索引大于9时会有问题，谢谢何以笙箫的指出
+                        var reg = new RegExp("({)" + i + "(})", "g");
+                        result = result.replace(reg, arguments[i]);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+</script>
+<script src="~/Scripts/ajaxupload.js"></script>
+<script src="~/Scripts/scroll.js"></script>
+<script>
+    $("#ulw ul li").click(function () { alert( $(this).val()) });
+    $(function () {
+        $("#btnAll").click(function () {
+            $.getJSON("/api/Contact/GetListAll/", function (data) {
+                var html = "<ul>";
+                $(data).each(function (i, item) {
+                    html += "<li>" + item.ID + ":" + item.Name + ":" + item.age + "</li>";
+                });
+                html += "</ul>";
+                $("#contactAll").html(html);
+            });
+        });
+
+        $("#btnID").click(function () {
+           
+            var id = $("#txtID").val();
+            $.getJSON("/api/Contact/GetContactByID/" + id, function (data) {
+                var html = "<ul>";
+                $(data).each(function (i, item) {
+                    html += "<li>" + item.ID + ":" + item.Name + ":" + item.age + "</li>";
+                });
+                html += "</ul>";
+                $("#contactID").html(html);
+            });
+        });
+
+        $("#btnSex").click(function () {
+            var sex = $("#ddlSex").val();
+            $.getJSON("/api/Contact/GetListBySex?sex=" + sex, function (data) {
+                var html = "<ul>";
+                $(data).each(function (i, item) {
+                    html += "<li>" + item.ID + ":" + item.Name + ":" + item.age + "</li>";
+                });
+                html += "</ul>";
+                $("#contactSex").html(html);
+            });
+        });
+    });
+</script>
+<script src="~/Scripts/jquery.treemenu.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".tree").treemenu({ delay: 300 }).openActive();
+    });
+</script>
+
+<script>
+    $("#btnRun").click(function ()
+    {
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/Home/Start/",
+            data: null,// 你的formid
+            async: false,
+            error: function (request) {
+                alert("Connection error");
+            },
+            success: function (data) {
+                $("#commonLayout_appcreshi").parent().html(data);
+            }
+        });    
+    });
+    $("#btnPause").click(function () {
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/Home/Pause/",
+            data: null,// 你的formid
+            async: false,
+            error: function (request) {
+                alert("Connection error");
+            },
+            success: function (data) {
+                $("#commonLayout_appcreshi").parent().html(data);
+            }
+        });
+    });
+
+    $("#btnResume").click(function () {
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/Home/Rest/",
+            data: null,// 你的formid
+            async: false,
+            error: function (request) {
+                alert("Connection error");
+            },
+            success: function (data) {
+                $("#commonLayout_appcreshi").parent().html(data);
+            }
+        });
+    });
+</script>
+
+
+<!----填充页面内容脚本--->
+<script type="text/javascript">
+    //这里面可以跳转到api控制器 也可以跳转到mvc  如果api：action: "/api/Contact/Addfile?type=1"，如果mvc  ：  action: "/Home/Addfile?type=1"
+    var irpfrom = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))
+        new AjaxUpload("#uploadFile", {
+            action: "/Home/Addfile?type=1"
+            //onComplete: function (file, response) {
+            //    response = $.parseJSON(response);
+
+            //}
+        });        
+</script>
+@*滚动条加载*@
+
+   <input type="hidden" id="sd" value="@ViewBag.MS" />

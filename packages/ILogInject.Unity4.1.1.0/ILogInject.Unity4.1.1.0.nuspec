@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ILogInject.Unity4</id>
+    <version>1.1.0</version>
+    <title>ILogInject.Unity4</title>
+    <authors>github.com/afterbuyaxel</authors>
+    <owners>github.com/afterbuyaxel</owners>
+    <licenseUrl>https://github.com/afterbuyaxel/ILogInject/blob/master/License.md</licenseUrl>
+    <projectUrl>https://github.com/afterbuyaxel/ILogInject/blob/master/README.md</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ILogInject.Unity enables the Unity IOC container to inject a CommonLogging.ILog class logger into a registered class.</description>
+    <summary>forked from https://github.com/trondr/ILogInject</summary>
+    <releaseNotes>1.1.0: .NET 4.5, unity 4.0.1</releaseNotes>
+    <copyright>Copyright © &lt;github.com/trondr&gt; 2013</copyright>
+    <language>en-US</language>
+    <tags>ilog unity ioc inject class logger logging</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Unity.Interception" version="4.0.1" />
+        <dependency id="Common.Logging" version="3.3.1" />
+      </group>
+    </dependencies>
+    <references>
+      <reference file="ILogInject.Unity.dll" />
+    </references>
+  </metadata>
+</package>

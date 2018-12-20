@@ -1,0 +1,50 @@
+﻿<div id="collapseOne" class="panel-collapse collapse">
+    <div class="panel-body">
+        @using (Html.BeginForm("Add", "Home", null, FormMethod.Post, new { @id = "formHelloJob", @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label for="LoginName" class="col-sm-2 control-label">群组</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="GroupName" id="GroupName"
+                           placeholder="请输入群组" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="col-sm-2 control-label">作业名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="JobName" id="JobName"
+                           placeholder="请输入作业名称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="col-sm-2 control-label">触发器名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="TriggerName" id="TriggerName"
+                           placeholder="请输入触发器名称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="col-sm-2 control-label">执行计划</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Cron" id="Cron"
+                           placeholder="请输入执行计划" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="col-sm-2 control-label">描述</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Description" id="Description"
+                           placeholder="请输入描述" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="hidden" name="Id" id="Id" />
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
