@@ -2,6 +2,7 @@
 using Quartz;
 using Quartz.Impl;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,8 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
@@ -20,6 +23,17 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
+            Hashtable has = new Hashtable();
+
+            List<Task> list = new List<Task>();
+            for (int i = 0; i < 200000; i++)
+            {
+                var t = new Task(() => { Thread.Sleep(1000); });
+                t.Start();
+                list.Add(t);
+            }
+            // Task.WaitAll(list.ToArray());
+            var sarr =list.ToArray().Count();
             OrderInfo model = new OrderInfo();
             Dictionary<string, string> kl = new Dictionary<string, string>();
             model.payType = "45465";
@@ -375,6 +389,6 @@ namespace WebApplication1.Controllers
             }
             String result = str.ToString().Substring(0, str.ToString().Length);
             return result;
-        } 
+        }     
     } 
 }
