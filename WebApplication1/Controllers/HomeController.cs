@@ -397,9 +397,17 @@ namespace WebApplication1.Controllers
         [MyException]
         public JsonResult Cun()
         {
-            var k = 0;
-            var p = 9 / k;
-            return Json("4");
+            //如果加了try 即使加了过滤器也进不去 因为 异常在这一层捕获到了
+            try
+            {
+                var k = 0;
+                var p = 9 / k;
+                return Json("4");
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
     } 
 }
