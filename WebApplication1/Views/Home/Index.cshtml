@@ -17,9 +17,9 @@
         }
     </style>
 </head>
-<body style="background-color:white;" >
-
-    <a id="hr_three" href="http://www.baidu.com"  onclick="alert('我是最里层！')">点击我</a>
+<body style="background-color:white;">
+    <a id="ceshi" >测试</a>
+    <a id="hr_three" href="http://www.baidu.com" onclick="alert('我是最里层！')">点击我</a>
     <div> 倒计时描述：<div id="miao"></div></div>
     <div id="timer"></div>
     <div style="margin-left:50%;">
@@ -276,9 +276,8 @@
        
         var mycars = new Array();    
         var st=$("#sd").val();
-        mycars = st.split('-');
-        alert(mycars);
-        setInterval("leftTimer(" + mycars[0] + "," + mycars[1] + "," + mycars[2] + "," + mycars[3] + "," + mycars[4] + "," + mycars[5] + ")", 1000);
+        mycars = st.split('-');     
+       // setInterval("leftTimer(" + mycars[0] + "," + mycars[1] + "," + mycars[2] + "," + mycars[3] + "," + mycars[4] + "," + mycars[5] + ")", 1000);
     });
         function leftTimer(year, month, day, hour, minute, second)
     {         
@@ -334,6 +333,20 @@
 <script>
     $("#ulw ul li").click(function () { alert( $(this).val()) });
     $(function () {
+
+        $("#ceshi").click(function () {
+          
+            $.ajax({
+                url: "/Home/Cun",
+                type: 'post',
+                data: null,
+                success: function (resultMode) { }
+            });
+        });
+
+
+
+
         $("#btnAll").click(function () {
             $.getJSON("/api/Contact/GetListAll/", function (data) {
                 var html = "<ul>";

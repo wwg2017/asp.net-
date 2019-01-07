@@ -23,17 +23,21 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-            Hashtable has = new Hashtable();
 
-            List<Task> list = new List<Task>();
-            for (int i = 0; i < 200000; i++)
-            {
-                var t = new Task(() => { Thread.Sleep(1000); });
-                t.Start();
-                list.Add(t);
-            }
-            // Task.WaitAll(list.ToArray());
-            var sarr =list.ToArray().Count();
+            //异常全局捕获
+            //var k=0;
+            //var h = 9 / k;
+            //Hashtable has = new Hashtable();
+
+            //List<Task> list = new List<Task>();
+            //for (int i = 0; i < 200000; i++)
+            //{
+            //    var t = new Task(() => { Thread.Sleep(1000); });
+            //    t.Start();
+            //    list.Add(t);
+            //}
+            //// Task.WaitAll(list.ToArray());
+            //var sarr =list.ToArray().Count();
             OrderInfo model = new OrderInfo();
             Dictionary<string, string> kl = new Dictionary<string, string>();
             model.payType = "45465";
@@ -389,6 +393,13 @@ namespace WebApplication1.Controllers
             }
             String result = str.ToString().Substring(0, str.ToString().Length);
             return result;
-        }     
+        }
+        [MyException]
+        public JsonResult Cun()
+        {
+            var k = 0;
+            var p = 9 / k;
+            return Json("4");
+        }
     } 
 }
