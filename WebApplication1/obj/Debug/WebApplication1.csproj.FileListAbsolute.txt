@@ -573,7 +573,6 @@ I:\Git仓储\asp.net-\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebo
 I:\Git仓储\asp.net-\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
 I:\Git仓储\asp.net-\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
 I:\Git仓储\asp.net-\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
 I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
 I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.dll
