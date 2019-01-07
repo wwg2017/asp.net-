@@ -9,7 +9,7 @@ namespace WebApplication1
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             //如果局部就不需要这个如果不是局部 就需要放开
-            //filters.Add(new MyExceptionAttribute());
+            filters.Add(new MyExceptionAttribute());
         }
     }
 }
