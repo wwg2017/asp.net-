@@ -18,6 +18,9 @@
     </style>
 </head>
 <body style="background-color:white;">
+    <div><a href="/Home/About">点击跳转到About</a></div>
+   
+    
     <a id="ceshi" >测试</a>
     <a id="hr_three" href="http://www.baidu.com" onclick="alert('我是最里层！')">点击我</a>
     <div> 倒计时描述：<div id="miao"></div></div>
@@ -447,7 +450,7 @@
     //这里面可以跳转到api控制器 也可以跳转到mvc  如果api：action: "/api/Contact/Addfile?type=1"，如果mvc  ：  action: "/Home/Addfile?type=1"
     var irpfrom = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))
         new AjaxUpload("#uploadFile", {
-            action: "/Home/Addfile?type=1"
+            action: "/api/Contact/Addfile?type=1"
             //onComplete: function (file, response) {
             //    response = $.parseJSON(response);
 

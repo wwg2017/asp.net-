@@ -577,3 +577,9 @@ I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompi
 I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.dll
 I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.pdb
+I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
+I:\Git仓储\asp.net-\WebApplication1\obj\Debug\Interop.WordClientPkgLib.dll
+I:\Git仓储\asp.net-\WebApplication1\obj\Debug\WebApplication1.csproj.ResolveComReference.cache
+I:\Git仓储\asp.net-\WebApplication1\bin\Aspose.Cells.dll
+I:\Git仓储\asp.net-\WebApplication1\bin\Aspose.Slides.dll
+I:\Git仓储\asp.net-\WebApplication1\bin\Aspose.Words.dll

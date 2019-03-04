@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿
+using Microsoft.Office.Interop.Word;
+using Newtonsoft.Json;
 using Quartz;
 using Quartz.Impl;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -17,13 +20,13 @@ using System.Web.Mvc;
 using WebApplication1.Models;
 using WebApplication1.Service;
 
+
 namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {
-
+        {            
             //异常全局捕获
             //var k=0;
             //var h = 9 / k;
@@ -408,6 +411,6 @@ namespace WebApplication1.Controllers
             {
                 return null;
             }
-        }
+        }       
     } 
 }
