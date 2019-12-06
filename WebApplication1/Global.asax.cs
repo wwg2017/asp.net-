@@ -25,6 +25,6 @@ namespace WebApplication1
             InterfaceInjection.Register(GlobalConfiguration.Configuration);
            //日志
             log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Log4.config")));          
-        }
+        }      
     }
 }

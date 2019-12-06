@@ -1,4 +1,5 @@
 ﻿
+using Common.Logging;
 using Microsoft.Office.Interop.Word;
 using Newtonsoft.Json;
 using Quartz;
@@ -25,8 +26,18 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
+        private static ILog _log;
         public ActionResult Index()
-        {            
+        {
+            _log = LogManager.GetLogger("ErrorLog");
+
+
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                _log.Error("6666");
+            });
+
+
             //异常全局捕获
             //var k=0;
             //var h = 9 / k;
